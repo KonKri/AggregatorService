@@ -9,8 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AggregatorService.Application\AggregatorService.Application.csproj" />
+    <ProjectReference Include="..\AggregatorService.Infrastructure\AggregatorService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
