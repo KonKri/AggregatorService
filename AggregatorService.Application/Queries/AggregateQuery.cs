@@ -2,7 +2,7 @@
 
 namespace AggregatorService.Application.Queries;
 
-public class FetchQuery : IRequest<bool>
+public class AggregateQuery : IRequest<bool>
 {
 
 }

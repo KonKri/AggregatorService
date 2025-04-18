@@ -4,5 +4,9 @@ namespace AggregatorService.Application.Services;
 
 public interface INewsService
 {
-    Task<List<NewsItem>> FetchAsync();
+    /// <summary>
+    /// Fetches news items, and the time elapsed for the http call to take place.
+    /// </summary>
+    /// <returns></returns>
+    Task<(List<NewsItem>, long)> FetchAsync();
 }

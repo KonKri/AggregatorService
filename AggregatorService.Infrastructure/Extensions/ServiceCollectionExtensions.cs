@@ -1,4 +1,5 @@
 ﻿using AggregatorService.Application.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAPI;
 
@@ -16,6 +17,19 @@ namespace AggregatorService.Infrastructure.Extensions
 
             services.AddSingleton(new NewsApiClient(apikey));
             services.AddSingleton<INewsService, NewsService>();
+            return services;
+        }
+
+        /// <summary>
+        /// Add Db Context for in-memory database for our agregate db, and repository.
+        /// </summary>
+        public static IServiceCollection AddAggregateDbContext(this IServiceCollection services)
+        {
+            // add db context.
+            services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"));
+            
+            // add the repository that the application layer should use.
+            services.AddSingleton<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
             return services;
         }
     }

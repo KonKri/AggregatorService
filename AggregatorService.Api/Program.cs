@@ -1,6 +1,5 @@
 using AggregatorService.Application.Queries;
 using AggregatorService.Infrastructure.Extensions;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<FetchQueryHandler>());
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<AggregateQueryHandler>());
 
 // add news api client.
 var newsApiKey = builder.Configuration.GetValue<string>("ApiKeys:NewsApi");
 builder.Services.AddNewsService(newsApiKey);
+
+builder.Services.AddAggregateDbContext();
 
 var app = builder.Build();
 

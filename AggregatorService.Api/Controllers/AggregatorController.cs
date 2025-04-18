@@ -18,7 +18,7 @@ public class AggregatorController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> FetchAsync()
     {
-        var query = new FetchQuery();
+        var query = new AggregateQuery();
         var res = await _mediator.Send(query);
         return Ok(res);
     }
