@@ -4,7 +4,7 @@ using AggregatorService.Domain.DbModels;
 
 namespace AggregatorService.Infrastructure;
 
-public class HttpRequestItemsRepository : IHttpRequestItemsRepository
+internal class HttpRequestItemsRepository : IHttpRequestItemsRepository
 {
     private readonly AggregateDbContext _context;
 

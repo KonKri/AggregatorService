@@ -10,13 +10,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<AggregateQueryHandler>());
 
 // add news api client.
 var newsApiKey = builder.Configuration.GetValue<string>("ApiKeys:NewsApi");
 builder.Services.AddNewsService(newsApiKey);
+builder.Services.AddAggregateDbContextAndRepo();
 
-builder.Services.AddAggregateDbContext();
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<FetchNewsQuery>());
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<AggregateQueryHandler>());
 
 var app = builder.Build();
 

@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace AggregatorService.Infrastructure;
 
-public class NewsService : INewsService
+internal class NewsService : INewsService
 {
     private readonly NewsApiClient _client;
 

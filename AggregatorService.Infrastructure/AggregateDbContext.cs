@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AggregatorService.Infrastructure;
 
-public class AggregateDbContext : DbContext
+internal class AggregateDbContext : DbContext
 {
     public AggregateDbContext(DbContextOptions options) : base(options)
     {

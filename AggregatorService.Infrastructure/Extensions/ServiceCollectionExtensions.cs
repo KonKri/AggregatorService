@@ -23,13 +23,13 @@ namespace AggregatorService.Infrastructure.Extensions
         /// <summary>
         /// Add Db Context for in-memory database for our agregate db, and repository.
         /// </summary>
-        public static IServiceCollection AddAggregateDbContext(this IServiceCollection services)
+        public static IServiceCollection AddAggregateDbContextAndRepo(this IServiceCollection services)
         {
             // add db context.
             services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"));
             
             // add the repository that the application layer should use.
-            services.AddSingleton<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
+            services.AddScoped<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
             return services;
         }
     }
