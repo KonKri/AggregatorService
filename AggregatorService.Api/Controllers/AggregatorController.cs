@@ -9,10 +9,12 @@ namespace AggregatorService.Api.Controllers;
 public class AggregatorController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<AggregatorController> _logger;
 
-    public AggregatorController(IMediator mediator)
+    public AggregatorController(IMediator mediator, ILogger<AggregatorController> logger)
     {
         _mediator = mediator;
+        _logger = logger;
     }
 
     [HttpGet]
