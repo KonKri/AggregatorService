@@ -5,7 +5,7 @@ public enum ApisEnum
     /// <summary>
     /// News Api
     /// </summary>
-    News = 0,
+    NewsApi = 0,
 
     /// <summary>
     /// Open Movie Database

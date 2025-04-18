@@ -24,7 +24,7 @@ internal class FetchNewsQueryHandler : IRequestHandler<FetchNewsQuery, List<News
 
         // persist http request to repo.
         // todo: could add hangfire or sth like that for the persistance to take place later.
-        await _repo.WriteAsync(ApisEnum.News, news.Item2, DateTime.UtcNow);
+        await _repo.WriteAsync(ApisEnum.NewsApi, news.Item2, DateTime.UtcNow);
 
         return news.Item1;
     }
