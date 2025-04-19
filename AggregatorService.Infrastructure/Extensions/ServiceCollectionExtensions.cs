@@ -27,7 +27,7 @@ namespace AggregatorService.Infrastructure.Extensions
         {
             // add db context.
             services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"));
-            
+
             // add the repository that the application layer should use.
             services.AddScoped<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
             return services;

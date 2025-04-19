@@ -30,7 +30,7 @@ internal class FetchNewsQueryHandler : IRequestHandler<FetchNewsQuery, List<News
     {
         _logger.LogInformation("Starting FetchNews handling.");
 
-        return await _cache.GetOrCreateAsync<List<NewsItem>>(GetCacheKeyFromRequest(request), async x => 
+        return await _cache.GetOrCreateAsync<List<NewsItem>>(GetCacheKeyFromRequest(request), async x =>
         {
             // keep the informatiton cached for only a short period of time.
             x.AbsoluteExpiration = DateTime.Now.AddSeconds(10);
@@ -39,10 +39,13 @@ internal class FetchNewsQueryHandler : IRequestHandler<FetchNewsQuery, List<News
             var news = await _newsService.FetchAsync(request.NewsQuery, request.NewsFrom, request.NewsTo);
             _logger.LogInformation("News fetched.");
 
-            // persist http request to repo.
-            // todo: could add hangfire or sth like that for the persistance to take place later.
-            await _repo.WriteAsync(ApisEnum.NewsApi, news.Item2, DateTime.UtcNow);
-            _logger.LogInformation("HttpRequest persisted.");
+            // check if the data is fallback. If they are fallback, do not write the request time.
+            if (!news.Item3)
+            {
+                // persist http request to repo.
+                await _repo.WriteAsync(ApisEnum.NewsApi, news.Item2, DateTime.UtcNow);
+                _logger.LogInformation("HttpRequest persisted.");
+            }
 
             return news.Item1;
         }) ?? [];
