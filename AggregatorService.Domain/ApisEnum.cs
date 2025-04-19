@@ -8,7 +8,7 @@ public enum ApisEnum
     NewsApi = 0,
 
     /// <summary>
-    /// Open Movie Database
+    /// Open Weather Map
     /// </summary>
-    OMDB = 1
+    OpenWeatherMap = 1
 }

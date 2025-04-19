@@ -10,5 +10,7 @@ public static class RequestExtensions
         NewsFrom = article.NewsFrom,
         NewsTo = article.NewsTo,
         NewsQuery = article.NewsQuery,
+        GithubUser = article.GithubUser,
+        WeatherCity = article.WeatherCity
     };
 }

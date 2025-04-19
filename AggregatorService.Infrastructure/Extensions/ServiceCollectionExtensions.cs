@@ -1,6 +1,8 @@
 ﻿using AggregatorService.Application.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NewsAPI;
 
 namespace AggregatorService.Infrastructure.Extensions
@@ -16,7 +18,7 @@ namespace AggregatorService.Infrastructure.Extensions
             ArgumentNullException.ThrowIfNull(apikey);
 
             services.AddSingleton(new NewsApiClient(apikey));
-            services.AddSingleton<INewsService, NewsService>();
+            services.AddScoped<INewsService, NewsService>();
             return services;
         }
 
@@ -26,7 +28,11 @@ namespace AggregatorService.Infrastructure.Extensions
         public static IServiceCollection AddAggregateDbContextAndRepo(this IServiceCollection services)
         {
             // add db context.
-            services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"));
+            // we have the lifetime as transient since we share the same
+            // dbcontext instance when writing the http requests.
+            // This raises excpetions since its being using along different threads.
+            // Transient makes new insance of context everytime it is needed.
+            services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"), ServiceLifetime.Transient);
 
             // add the repository that the application layer should use.
             services.AddScoped<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
@@ -44,5 +50,21 @@ namespace AggregatorService.Infrastructure.Extensions
             services.AddScoped<IJwtTokenService>(factory => new JwtTokenService(key, issuer, audience, expiresIn));
             return services;
         }
+
+        public static IServiceCollection AddWeatherService(this IServiceCollection services, string apiKey)
+        {
+            ArgumentNullException.ThrowIfNull(apiKey);
+
+            // inject specific http client tfor this service.
+            services.AddHttpClient<IWeatherService, WeatherService>((client, services) =>
+            {
+                client.BaseAddress = new Uri("https://api.openweathermap.org");
+                return new WeatherService(client, services.GetRequiredService<ILogger<WeatherService>>(), apiKey);
+            });
+
+            return services;
+        }
+
+
     }
 }

@@ -24,11 +24,15 @@ public class AggregateQueryHandler : IRequestHandler<AggregateQuery, Aggregate>
         var fetchNewsQuery = request.ToFetchNewsQuery();
         var fetchNewsTask = _mediator.Send(fetchNewsQuery);
 
+        var fetchWeatherQuery = request.ToFetchWeatherQuery();
+        var fetchWeatherTask = _mediator.Send(fetchWeatherQuery);
+
         await Task.WhenAll(fetchNewsTask);
         
         return new Aggregate
         {
-            News = fetchNewsTask.Result
+            News = fetchNewsTask.Result,
+            Weather = fetchWeatherTask.Result,
         };
     }
 

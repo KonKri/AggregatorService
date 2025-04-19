@@ -8,4 +8,8 @@ public class AggregateQuery : IRequest<Aggregate>
     public DateTime? NewsFrom { get; set; }
     public DateTime? NewsTo { get; set; }
     public string NewsQuery { get; set; }
+
+    public string WeatherCity { get; set; }
+
+    public string GithubUser { get; set; }
 }

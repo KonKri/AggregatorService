@@ -57,7 +57,7 @@ internal class FetchNewsQueryHandler : IRequestHandler<FetchNewsQuery, List<News
     private static string GetCacheKeyFromRequest(FetchNewsQuery request)
     {
         var builder = new StringBuilder();
-        builder.AppendJoin("_", request.NewsQuery, request.NewsFrom, request.NewsTo);
+        builder.AppendJoin("_", "NEWS", request.NewsQuery, request.NewsFrom, request.NewsTo);
 
         return builder.ToString();
     }

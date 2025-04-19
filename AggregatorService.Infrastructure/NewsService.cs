@@ -25,6 +25,7 @@ internal class NewsService : INewsService
             .Handle<Exception>()
             .OrResult<ArticlesResult>(res => res.Status == NewsAPI.Constants.Statuses.Error)
             .RetryAsync(3);
+
         _logger = logger;
     }
 

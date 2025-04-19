@@ -72,6 +72,9 @@ builder.Services.AddSwaggerGen(options =>
 // add news api client.
 var newsApiKey = builder.Configuration.GetValue<string>("ApiKeys:NewsApi");
 builder.Services.AddNewsService(newsApiKey);
+
+var weatherApiKey = builder.Configuration.GetValue<string>("ApiKeys:OpenWeatherApi");
+builder.Services.AddWeatherService(weatherApiKey);
 builder.Services.AddAggregateDbContextAndRepo();
 builder.Services.AddMemoryCache();
 

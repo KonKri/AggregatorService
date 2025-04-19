@@ -10,4 +10,9 @@ public static class RequestExtensions
         NewsTo = article.NewsTo,
         NewsQuery = article.NewsQuery,
     };
+
+    public static FetchWeatherQuery ToFetchWeatherQuery(this AggregateQuery article) => new FetchWeatherQuery
+    {
+        WeatherCity = article.WeatherCity,
+    };
 }
