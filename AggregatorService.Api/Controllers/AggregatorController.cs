@@ -1,10 +1,12 @@
 ﻿using AggregatorService.Api.Extensions;
 using AggregatorService.Api.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AggregatorService.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class AggregatorController : ControllerBase

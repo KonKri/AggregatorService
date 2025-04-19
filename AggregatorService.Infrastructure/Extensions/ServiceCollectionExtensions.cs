@@ -32,5 +32,17 @@ namespace AggregatorService.Infrastructure.Extensions
             services.AddScoped<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
             return services;
         }
+
+        public static IServiceCollection AddJWT(this IServiceCollection services, string key, string issuer, string audience, int expiresIn)
+        {
+            ArgumentNullException.ThrowIfNull(key);
+            ArgumentNullException.ThrowIfNull(issuer);
+            ArgumentNullException.ThrowIfNull(audience);
+
+            if (expiresIn == 0) throw new ArgumentOutOfRangeException("'expiresIn' value is 0");
+
+            services.AddScoped<IJwtTokenService>(factory => new JwtTokenService(key, issuer, audience, expiresIn));
+            return services;
+        }
     }
 }
