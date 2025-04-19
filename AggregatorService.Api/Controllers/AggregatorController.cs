@@ -1,4 +1,5 @@
-﻿using AggregatorService.Application.Queries;
+﻿using AggregatorService.Api.Extensions;
+using AggregatorService.Api.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,10 @@ public class AggregatorController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> FetchAsync()
+    public async Task<IActionResult> FetchAsync([FromQuery] FetchRequest request)
     {
-        var query = new AggregateQuery();
+        var query = request.ToAggregateQuery();
+
         var res = await _mediator.Send(query);
         return Ok(res);
     }

@@ -1,4 +1,5 @@
-﻿using AggregatorService.Domain;
+﻿using AggregatorService.Application.Extensions;
+using AggregatorService.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -20,9 +21,10 @@ public class AggregateQueryHandler : IRequestHandler<AggregateQuery, Aggregate>
         _logger.LogInformation("Starting Aggregate handling.");
 
         // todo: add more tasks here.
-        var fetchNewsTask = _mediator.Send(new FetchNewsQuery());
+        var fetchNewsQuery = request.ToFetchNewsQuery();
+        var fetchNewsTask = _mediator.Send(fetchNewsQuery);
 
-        Task.WhenAll(fetchNewsTask);
+        await Task.WhenAll(fetchNewsTask);
         
         return new Aggregate
         {

@@ -16,12 +16,14 @@ internal class NewsService : INewsService
         _client = client;
     }
 
-    public async Task<(List<NewsItem>, long)> FetchAsync()
+    public async Task<(List<NewsItem>, long)> FetchAsync(string query, DateTime? from, DateTime? to)
     {
         // prepare req.
         var req = new EverythingRequest
         {
-            Q = "Mitsotakis",
+            Q = query,
+            From = from,
+            To = to
         };
 
         var stopWatch = new Stopwatch();
