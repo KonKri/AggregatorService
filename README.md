@@ -42,3 +42,8 @@ Should you get your JWT, you can add it in the upper right corner of the Swagger
 
 
 ## Future fixes
+In case ther was extra time, I would probably use it to:
+- Migration congiration from appsttings.json to Environmnet Variables for Docker Support as well.
+- Add caching configuration in app settings.
+- Add FluentValidation with MediatR pipelines to validate the input request from the user.
+- Add Polly directly to HttpClient using Depedency Injection.
