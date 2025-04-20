@@ -1,5 +1,6 @@
 ﻿using AggregatorService.Api.Extensions;
 using AggregatorService.Api.Requests;
+using AggregatorService.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,11 +30,12 @@ public class AggregatorController : ControllerBase
         return Ok(res);
     }
 
-    [HttpGet]
-    public async Task<IActionResult> FetchStatisticsAsync()
-    {
 
-        var res = await _mediator.Send(query);
+    [HttpGet()]
+    [Route("Stats")]
+    public async Task<IActionResult> GetStatisticsAsync()
+    {
+        var res = await _mediator.Send(new GetStatisticsQuery());
         return Ok(res);
     }
 }

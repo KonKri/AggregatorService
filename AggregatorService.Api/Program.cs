@@ -82,8 +82,8 @@ builder.Services.AddProbeHostedService();
 builder.Services.AddAggregateDbContextAndRepo();
 builder.Services.AddMemoryCache();
 
+// other handlers in the same assembly will be auto injected.
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<FetchNewsQuery>());
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<AggregateQueryHandler>());
 
 var app = builder.Build();
 

@@ -30,4 +30,11 @@ internal class HttpRequestItemsRepository : IHttpRequestItemsRepository
 
         _ = db.SaveChangesAsync();
     }
+
+    public async Task<List<HttpRequestItem>> GetRequests()
+    {
+        using var db = new AggregateDbContext(_dbOptions);
+
+        return await db.HttpRequestItems.ToListAsync();
+    }
 }
