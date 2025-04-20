@@ -1,16 +1,17 @@
 ﻿using AggregatorService.Application.Services;
 using AggregatorService.Domain;
 using AggregatorService.Domain.DbModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace AggregatorService.Infrastructure;
 
 internal class HttpRequestItemsRepository : IHttpRequestItemsRepository
 {
-    private readonly AggregateDbContext _context;
+    private readonly DbContextOptions<AggregateDbContext> _dbOptions;
 
-    public HttpRequestItemsRepository(AggregateDbContext context)
+    public HttpRequestItemsRepository(DbContextOptions<AggregateDbContext> dbOptions)
     {
-        _context = context;
+        _dbOptions = dbOptions;
     }
 
     public async Task WriteAsync(
@@ -18,13 +19,15 @@ internal class HttpRequestItemsRepository : IHttpRequestItemsRepository
         long lastedForMilliseconds,
         DateTime requstedOn)
     {
-        _ = await _context.HttpRequestItems.AddAsync(new HttpRequestItem()
+        using var db = new AggregateDbContext(_dbOptions);
+
+        _ = await db.HttpRequestItems.AddAsync(new HttpRequestItem()
         {
             ApiName = apiName,
             LastedForMilliseconds = lastedForMilliseconds,
             RequestedOnUtc = requstedOn
         });
 
-        _ = _context.SaveChangesAsync();
+        _ = db.SaveChangesAsync();
     }
 }

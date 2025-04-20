@@ -33,7 +33,7 @@ namespace AggregatorService.Infrastructure.Extensions
             // dbcontext instance when writing the http requests.
             // This raises excpetions since its being using along different threads.
             // Transient makes new insance of context everytime it is needed.
-            services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"), ServiceLifetime.Transient);
+            services.AddDbContext<AggregateDbContext>(options => options.UseInMemoryDatabase("AggregateDb"), ServiceLifetime.Scoped);
 
             // add the repository that the application layer should use.
             services.AddScoped<IHttpRequestItemsRepository, HttpRequestItemsRepository>();
