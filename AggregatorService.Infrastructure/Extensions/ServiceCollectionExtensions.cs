@@ -80,5 +80,11 @@ namespace AggregatorService.Infrastructure.Extensions
 
             return services;
         }
+
+        public static IServiceCollection AddProbeHostedService(this IServiceCollection services)
+        {
+            services.AddHostedService<ProbeHostedService>();
+            return services;
+        }
     }
 }

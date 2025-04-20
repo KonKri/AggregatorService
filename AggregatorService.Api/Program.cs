@@ -1,10 +1,8 @@
 using AggregatorService.Application.Queries;
 using AggregatorService.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,6 +76,8 @@ builder.Services.AddWeatherService(weatherApiKey);
 
 var githubApiKey = builder.Configuration.GetValue<string>("ApiKeys:GithubApi");
 builder.Services.AddGithubService(githubApiKey);
+
+builder.Services.AddProbeHostedService();
 
 builder.Services.AddAggregateDbContextAndRepo();
 builder.Services.AddMemoryCache();
