@@ -12,11 +12,11 @@ namespace AggregatorService.Infrastructure;
 internal class WeatherService : IWeatherService
 {
     private readonly HttpClient _httpClient;
-    private readonly ILogger<WeatherService> _logger;
+    private readonly ILogger<IWeatherService> _logger;
     private readonly string _apiKey;
     private readonly AsyncRetryPolicy<HttpResponseMessage> _retryPolicy;
 
-    public WeatherService(HttpClient httpClient, ILogger<WeatherService> logger, string apiKey)
+    public WeatherService(HttpClient httpClient, ILogger<IWeatherService> logger, string apiKey)
     {
         _httpClient = httpClient;
         _logger = logger;

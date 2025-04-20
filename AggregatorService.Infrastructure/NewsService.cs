@@ -10,6 +10,7 @@ using System.Diagnostics;
 
 namespace AggregatorService.Infrastructure;
 
+//[assemlby: InternalsVisibleTo("AggregatorService.Infrastructure.Tests")]
 internal class NewsService : INewsService
 {
     private readonly NewsApiClient _client;

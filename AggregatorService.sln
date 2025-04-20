@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Api", "AggregatorService.Api\AggregatorService.Api.csproj", "{BA34C0ED-E2CF-4E1D-BB77-DA41A30CDAB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AggregatorService.Api", "AggregatorService.Api\AggregatorService.Api.csproj", "{BA34C0ED-E2CF-4E1D-BB77-DA41A30CDAB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F0891942-2F2A-4A28-A4CF-AA556B5C4AE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{52498A2B-038C-44B9-89E1-219900214906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Domain", "AggregatorService.Domain\AggregatorService.Domain.csproj", "{1887F23C-722C-4387-85D4-9FB995F89313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AggregatorService.Domain", "AggregatorService.Domain\AggregatorService.Domain.csproj", "{1887F23C-722C-4387-85D4-9FB995F89313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Application", "AggregatorService.Application\AggregatorService.Application.csproj", "{38FD1FF0-D1B6-4C9E-AE1F-AB47AF5DC995}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AggregatorService.Application", "AggregatorService.Application\AggregatorService.Application.csproj", "{38FD1FF0-D1B6-4C9E-AE1F-AB47AF5DC995}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Infrastructure", "AggregatorService.Infrastructure\AggregatorService.Infrastructure.csproj", "{84717A14-931A-457C-93EF-E16D16D56941}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AggregatorService.Infrastructure", "AggregatorService.Infrastructure\AggregatorService.Infrastructure.csproj", "{84717A14-931A-457C-93EF-E16D16D56941}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Tests", "AggregatorService.Tests\AggregatorService.Tests.csproj", "{723C4864-68FB-47BD-BEE5-74AADCD0F96E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AggregatorService.Tests", "AggregatorService.Tests\AggregatorService.Tests.csproj", "{723C4864-68FB-47BD-BEE5-74AADCD0F96E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregatorService.Infrastructure.Tests", "AggregatorService.Infrastructure.Tests\AggregatorService.Infrastructure.Tests.csproj", "{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{723C4864-68FB-47BD-BEE5-74AADCD0F96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{723C4864-68FB-47BD-BEE5-74AADCD0F96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{723C4864-68FB-47BD-BEE5-74AADCD0F96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{38FD1FF0-D1B6-4C9E-AE1F-AB47AF5DC995} = {F0891942-2F2A-4A28-A4CF-AA556B5C4AE4}
 		{84717A14-931A-457C-93EF-E16D16D56941} = {F0891942-2F2A-4A28-A4CF-AA556B5C4AE4}
 		{723C4864-68FB-47BD-BEE5-74AADCD0F96E} = {52498A2B-038C-44B9-89E1-219900214906}
+		{23ABE111-FF49-4A07-B7A8-C0CD0BCE671D} = {52498A2B-038C-44B9-89E1-219900214906}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A33D9B17-2161-416F-81D8-579D8AA7111C}

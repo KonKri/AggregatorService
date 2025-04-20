@@ -1,9 +1,8 @@
 ﻿using AggregatorService.Domain;
 
-namespace AggregatorService.Application.Services
+namespace AggregatorService.Application.Services;
+
+public interface IWeatherService
 {
-    public interface IWeatherService
-    {
-        Task<(WeatherItem, long, bool)> FetchAsync(string city);
-    }
+    Task<(WeatherItem, long, bool)> FetchAsync(string city);
 }
