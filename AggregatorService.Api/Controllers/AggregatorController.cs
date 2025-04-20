@@ -28,4 +28,12 @@ public class AggregatorController : ControllerBase
         var res = await _mediator.Send(query);
         return Ok(res);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> FetchStatisticsAsync()
+    {
+
+        var res = await _mediator.Send(query);
+        return Ok(res);
+    }
 }
