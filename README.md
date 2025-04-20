@@ -40,6 +40,7 @@ Aggregation Service utilizes JWT tokens. If you run the Api project you will be 
 
 Should you get your JWT, you can add it in the upper right corner of the Swagger page, by clicking ```Authorize 🔒```. After that you are authorized to use the ```/api/Aggregator``` and ```/api/Aggregator/Stats``` endpoints.
 
+Now you can call ```api/Aggregator?NewsQuery=Greece&WeatherCity=Athens&GithubUser=konkri```
 
 ## Future fixes
 In case ther was extra time, I would probably use it to:
