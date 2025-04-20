@@ -75,6 +75,10 @@ builder.Services.AddNewsService(newsApiKey);
 
 var weatherApiKey = builder.Configuration.GetValue<string>("ApiKeys:OpenWeatherApi");
 builder.Services.AddWeatherService(weatherApiKey);
+
+var githubApiKey = builder.Configuration.GetValue<string>("ApiKeys:GithubApi");
+builder.Services.AddGithubService(githubApiKey);
+
 builder.Services.AddAggregateDbContextAndRepo();
 builder.Services.AddMemoryCache();
 

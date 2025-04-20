@@ -27,12 +27,16 @@ public class AggregateQueryHandler : IRequestHandler<AggregateQuery, Aggregate>
         var fetchWeatherQuery = request.ToFetchWeatherQuery();
         var fetchWeatherTask = _mediator.Send(fetchWeatherQuery);
 
+        var fetchGithubUserQuery = request.ToFetchGithubUserQuery();
+        var fetchGithubUserTask = _mediator.Send(fetchGithubUserQuery);
+
         await Task.WhenAll(fetchNewsTask);
         
         return new Aggregate
         {
             News = fetchNewsTask.Result,
             Weather = fetchWeatherTask.Result,
+            GithubUser = fetchGithubUserTask.Result,
         };
     }
 

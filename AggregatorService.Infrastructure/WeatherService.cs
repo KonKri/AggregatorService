@@ -54,7 +54,7 @@ internal class WeatherService : IWeatherService
         }
         catch (Exception e)
         {
-            _logger.LogError("NewsApi unavailable, returning fallback.");
+            _logger.LogError("WeatherApi unavailable, returning fallback.");
             return (new WeatherItem
             {
                 City = "-",

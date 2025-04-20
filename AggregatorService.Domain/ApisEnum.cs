@@ -10,5 +10,10 @@ public enum ApisEnum
     /// <summary>
     /// Open Weather Map
     /// </summary>
-    OpenWeatherMap = 1
+    OpenWeatherMap = 1,
+
+    /// <summary>
+    /// Github Api
+    /// </summary>
+    GithubApi = 2
 }

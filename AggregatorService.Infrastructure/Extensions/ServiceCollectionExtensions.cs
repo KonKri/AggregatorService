@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NewsAPI;
+using System.Net.Http.Headers;
 
 namespace AggregatorService.Infrastructure.Extensions
 {
@@ -65,6 +66,19 @@ namespace AggregatorService.Infrastructure.Extensions
             return services;
         }
 
+        public static IServiceCollection AddGithubService(this IServiceCollection services, string apiKey)
+        {
+            ArgumentNullException.ThrowIfNull(apiKey);
 
+            // inject specific http client tfor this service.
+            services.AddHttpClient<IGithubService, GithubService>(client=>
+            {
+                client.BaseAddress = new Uri("https://api.github.com");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", apiKey);
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AggrgatorService", "1.0"));
+            });
+
+            return services;
+        }
     }
 }
